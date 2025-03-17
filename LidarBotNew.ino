@@ -46,11 +46,11 @@ void loop() {
     obstacleL = false;
 
     if (distance <= obstacleD) {
-      if (angle >= 80 && angle <= 100) {
+      if (angle >= 350 && angle <= 360 || angle <= 10 && angle >= 0) {
         obstacleF = true;
-      } else if (angle >= 0 && angle < 80) {
+      } else if (angle > 10 && angle <= 90) {
         obstacleR = true;
-      } else if (angle > 100 && angle <= 180) {
+      } else if (angle >= 270 && angle <= 350) {
         obstacleL = true;
       }
     }
