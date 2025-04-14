@@ -1,24 +1,17 @@
-/* 
- * Copyright (c) 2014, RoboPeak 
- * All rights reserved.
- * RoboPeak.com
-*/
-
 #include <RPLidar.h>
 
 RPLidar lidar;
 
 #define RPLIDAR_MOTOR 3
-#define obstacleD 155  //155 mm = 15.5 cm
+#define obstacleD 20
 
-//MOTOR PINS
-#define ENA 9  //PWM motorA
-#define IN1 4  //control pin1 motorA
-#define IN2 5  //control pin2 motorA
+#define ENA 9
+#define IN1 4
+#define IN2 5 
 
-#define ENB 10  //PWM motorB
-#define IN3 6   //control pin1 motorB
-#define IN4 7   //control pin2 motorB
+#define ENB 10
+#define IN3 6
+#define IN4 7
 
 bool obstacleF = false;
 bool obstacleR = false;
@@ -38,8 +31,8 @@ void setup() {
 
 void loop() {
   if (IS_OK(lidar.waitPoint())) {
-    float distance = lidar.getCurrentPoint().distance;  //distance in mm
-    float angle = lidar.getCurrentPoint().angle;        //angle in deg
+    float distance = lidar.getCurrentPoint().distance;
+    float angle = lidar.getCurrentPoint().angle;
 
     obstacleF = false;
     obstacleR = false;
@@ -75,52 +68,52 @@ void loop() {
   } else {
     analogWrite(RPLIDAR_MOTOR, 0);
 
-    //try to detect RPLIDAR
     rplidar_response_device_info_t info;
     if (IS_OK(lidar.getDeviceInfo(info, 100))) {
       lidar.startScan();
       analogWrite(RPLIDAR_MOTOR, 255);
       delay(1000);
     } else {
-      stopMotors();  //if no lidar, stop
+      stopMotors();
     }
   }
+  delay(10);
 }
 
 void moveForward() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
-  analogWrite(ENA, 200);
-  analogWrite(ENB, 200);
+  analogWrite(ENA, 60);
+  analogWrite(ENB, 60);
 }
 
 void moveBack() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
-  analogWrite(ENA, 200);
-  analogWrite(ENB, 200);
+  analogWrite(ENA, 60);
+  analogWrite(ENB, 60);
 }
 
 void turnLeft() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-  analogWrite(ENA, 100);
-  analogWrite(ENB, 100);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+  analogWrite(ENA, 200);
+  analogWrite(ENB, 200);
 }
 
 void turnRight() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
-  analogWrite(ENA, 100);
-  analogWrite(ENB, 100);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, 200);
+  analogWrite(ENB, 200);
 }
 
 void stopMotors() {
