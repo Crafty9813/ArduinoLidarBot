@@ -3,7 +3,7 @@
 RPLidar lidar;
 
 #define RPLIDAR_MOTOR 3
-#define obstacleD 20
+#define obstacleD 15.5
 
 #define ENA 9
 #define IN1 4
