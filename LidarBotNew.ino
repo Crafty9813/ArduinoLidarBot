@@ -80,22 +80,23 @@ void loop() {
   delay(10);
 }
 
+// Don't want it to go super fast, slow speeds so it can avoid obstacles better
 void moveForward() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-  analogWrite(ENA, 60);
-  analogWrite(ENB, 60);
-}
-
-void moveBack() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
-  analogWrite(ENA, 60);
-  analogWrite(ENB, 60);
+  analogWrite(ENA, 70);
+  analogWrite(ENB, 70);
+}
+
+void moveBack() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+  analogWrite(ENA, 70);
+  analogWrite(ENB, 70);
 }
 
 void turnLeft() {
