@@ -1,3 +1,5 @@
+// I'm using nested if loops bc I feel like it's a bit easier to read out the logic...or like steps
+
 #include <RPLidar.h>
 
 RPLidar lidar;
