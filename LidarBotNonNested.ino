@@ -1,4 +1,4 @@
-// I'm using nested if loops bc I feel like it's a bit easier to read out the logic...or like steps
+// This is using non-nested if loops for the control logic.
 
 #include <RPLidar.h>
 
