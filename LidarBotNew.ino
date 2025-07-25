@@ -1,4 +1,4 @@
-// I'm using nested if loops bc I feel like it's a bit easier to read out the logic...or like steps
+// I'm using nested here bc I like how it splits into a forward group and then the rest of the general conditions.
 
 #include <RPLidar.h>
 
