@@ -4,6 +4,8 @@
  * RoboPeak.com
 */
 
+//THIS CODE WILL CAUSE CONFLICTS- IF NO OBSTACLE IS FOUND THEN ALL MOTOR CMDS WILL RUN
+
 #include <RPLidar.h>
 
 RPLidar lidar;
